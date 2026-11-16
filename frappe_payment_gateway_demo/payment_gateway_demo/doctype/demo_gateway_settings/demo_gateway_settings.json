@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "creation": "2026-11-16 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "base_url",
+  "secret_key",
+  "webhook_secret",
+  "column_break_accounts",
+  "company",
+  "receiving_account",
+  "reconcile_after_minutes"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "description": "Provider API root, e.g. https://api.example-pay.com",
+   "fieldname": "base_url",
+   "fieldtype": "Data",
+   "label": "API Base URL",
+   "mandatory_depends_on": "enabled"
+  },
+  {
+   "fieldname": "secret_key",
+   "fieldtype": "Password",
+   "label": "Secret Key",
+   "mandatory_depends_on": "enabled"
+  },
+  {
+   "description": "Used to verify the HMAC-SHA512 signature on incoming webhooks.",
+   "fieldname": "webhook_secret",
+   "fieldtype": "Password",
+   "label": "Webhook Secret",
+   "mandatory_depends_on": "enabled"
+  },
+  {
+   "fieldname": "column_break_accounts",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "mandatory_depends_on": "enabled",
+   "options": "Company"
+  },
+  {
+   "description": "Bank or clearing account the provider settles into.",
+   "fieldname": "receiving_account",
+   "fieldtype": "Link",
+   "label": "Receiving Account",
+   "mandatory_depends_on": "enabled",
+   "options": "Account"
+  },
+  {
+   "default": "15",
+   "description": "Pending transactions older than this are re-checked with the provider.",
+   "fieldname": "reconcile_after_minutes",
+   "fieldtype": "Int",
+   "label": "Reconcile After (Minutes)"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-16 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Payment Gateway Demo",
+ "name": "Demo Gateway Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
